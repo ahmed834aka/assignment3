@@ -1,0 +1,116 @@
+Q2)import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+    public static Integer max(ArrayList<Integer> list) {
+        if (list == null || list.isEmpty()) {
+            return null;
+        }
+        return Collections.max(list);
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(10);
+        numbers.add(20);
+        numbers.add(30);
+
+        Integer maxValue = max(numbers);
+        System.out.println("The maximum value is: " + maxValue);
+    }
+}
+Q3)import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+    public static void sort(ArrayList<Integer> list) {
+        if (list != null) {
+            Collections.sort(list);
+        }
+    }
+
+    public static void main(String[] args) {
+        ArrayList<Integer> numbers = new ArrayList<>();
+        numbers.add(5);
+        numbers.add(3);
+        numbers.add(8);
+        numbers.add(1);
+
+        System.out.println("Unsorted list: " + numbers);
+        sort(numbers);
+        System.out.println("Sorted list: " + numbers);
+    }
+}
+Q6)import java.util.ArrayList;
+
+class GroceryItemOrder {
+    private String name;
+    private int quantity;
+    private double pricePerUnit;
+
+    public GroceryItemOrder(String name, int quantity, double pricePerUnit) {
+        this.name = name;
+        this.quantity = quantity;
+        this.pricePerUnit = pricePerUnit;
+    }
+
+    public double getCost() {
+        return quantity * pricePerUnit;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    @Override
+    public String toString() {
+        return quantity + " x " + name + " @ " + pricePerUnit + " each";
+    }
+}
+
+class GroceryList {
+    private ArrayList<GroceryItemOrder> items;
+    private static final int MAX_ITEMS = 10;
+
+    public GroceryList() {
+        items = new ArrayList<>();
+    }
+
+    public void add(GroceryItemOrder item) {
+        if (items.size() < MAX_ITEMS) {
+            items.add(item);
+        } else {
+            System.out.println("The list is full. Cannot add more items.");
+        }
+    }
+
+    public double getTotalCost() {
+        double totalCost = 0;
+        for (GroceryItemOrder item : items) {
+            totalCost += item.getCost();
+        }
+        return totalCost;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder list = new StringBuilder("Grocery List:\n");
+        for (GroceryItemOrder item : items) {
+            list.append(item).append("\n");
+        }
+        list.append("Total Cost: ").append(getTotalCost());
+        return list.toString();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        GroceryList groceryList = new GroceryList();
+
+        groceryList.add(new GroceryItemOrder("Cookies", 4, 2.30));
+        groceryList.add(new GroceryItemOrder("Milk", 2, 1.50));
+        groceryList.add(new GroceryItemOrder("Bread", 1, 2.00));
+
+        System.out.println(groceryList);
+    }
+}
