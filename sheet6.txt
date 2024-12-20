@@ -1,0 +1,168 @@
+Q1)
+package com.example.q1;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+public class HelloApplication extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        GridPane gridPane = new GridPane();
+
+
+        Image flag = new Image("D://AAST//Term 5//Java Programming//ECE3105 Java Programming//Sheet #6//Q1//img//flag.jpeg");
+
+        ImageView flagview = new ImageView(flag);
+        flagview.setFitHeight(100);flagview.setFitWidth(150);
+        ImageView flagview2 = new ImageView(flag);
+        flagview2.setFitHeight(100);flagview2.setFitWidth(150);
+        ImageView flagview3 = new ImageView(flag);
+        flagview3.setFitHeight(100);flagview3.setFitWidth(150);
+        ImageView flagview4 = new ImageView(flag);
+        flagview4.setFitHeight(100);flagview4.setFitWidth(150);
+
+        gridPane.add(flagview,1,1);
+        gridPane.add(flagview2,2,1);
+        gridPane.add(flagview4,1,2);
+        gridPane.add(flagview3,2,2);
+
+
+        Scene scene = new Scene(gridPane, 300, 200);
+        stage.setTitle("barcelona");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
+Q2)
+package com.example.q3;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+
+import java.util.Random;
+
+
+import java.io.IOException;
+
+public class HelloApplication extends Application {
+    @Override
+    public void start(Stage stage) throws IOException {
+        Pane pane = new Pane();
+        Random random = new Random();
+        HBox h = new HBox();
+        Insets insets = new Insets(20);
+        h.setPadding(insets);
+        h.setSpacing(10);
+
+        Text t = new Text("java");
+        t.setRotate(90);
+        t.setFill(Color.color(random.nextDouble(), random.nextDouble(),random.nextDouble()));
+        t.setFont(Font.font("Times New Romain", FontWeight.BOLD,FontPosture.ITALIC,22));
+
+        Text t2 = new Text("java");
+        t2.setRotate(90);
+        t2.setFill(Color.color(random.nextDouble(), random.nextDouble(),random.nextDouble()));
+        t2.setFont(Font.font("Times New Romain", FontWeight.BOLD,FontPosture.ITALIC,22));
+
+        Text t3 = new Text("java");
+        t3.setRotate(90);
+        t3.setFont(Font.font("Times New Romain", FontWeight.BOLD,FontPosture.ITALIC,22));
+        t3.setFill(Color.color(random.nextDouble(), random.nextDouble(),random.nextDouble()));
+
+        Text t4 = new Text("java");
+        t4.setRotate(90);
+        t4.setFont(Font.font("Times New Romain", FontWeight.BOLD,FontPosture.ITALIC,22));
+        t4.setFill(Color.color(random.nextDouble(), random.nextDouble(),random.nextDouble()));
+
+
+
+        h.getChildren().add(t);
+        h.getChildren().add(t2);
+        h.getChildren().add(t3);
+        h.getChildren().add(t4);
+
+        pane.getChildren().add(h);
+
+        Scene scene = new Scene(pane, 222, 100);
+        stage.setTitle("Hello!");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
+Q5)
+package com.example.q5;
+
+
+import javafx.application.Application;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+
+public class HelloApplication extends Application {
+    @Override
+    public void start(Stage stage){
+        HBox h = new HBox();
+        h.setSpacing(10);
+        h.setAlignment(Pos.BOTTOM_CENTER);
+        String[] labels = {"Projects--20%", "Quizzes--10%", "Midterm Exams--30%", "Final Exam--40%"};
+        int[] perc = {20, 10, 30, 40};
+        Color[] colors = {Color.RED, Color.BLUE, Color.GREEN, Color.ORANGE};
+
+        for(int i=0;i<4;i++)
+        {
+            Rectangle bar= new Rectangle(50,perc[i]*2);
+            bar.setFill(colors[i]);
+
+            Text t = new Text(labels[i]);
+
+            VBox BwL = new VBox();
+            BwL.setAlignment(Pos.BOTTOM_CENTER);
+            BwL.setSpacing(5);
+            BwL.getChildren().addAll(t,bar);
+
+            h.getChildren().add(BwL);
+
+        }
+
+        Scene scene = new Scene(h, 400, 150);
+        stage.setTitle("Bar Chart");
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
